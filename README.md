@@ -27,6 +27,6 @@ Over the weeks we will look at the following topics, teaching you everything you
 
 ### [https://youtu.be/VzBGi_n65iU](https://youtu.be/VzBGi_n65iU)
 
-### Branch: episode_1
+### Branch: [episode_1](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_1)
 
 In this episode I show you how to build the simplest service you can using the standard packages in the Go programming language. 
