@@ -30,3 +30,12 @@ Over the weeks we will look at the following topics, teaching you everything you
 ### Branch: [episode_1](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_1)
 
 In this episode I show you how to build the simplest service you can using the standard packages in the Go programming language. 
+
+
+## Episode 2 - Building a simple microservice, continued
+
+### [https://youtu.be/hodOppKJm5Y](https://youtu.be/hodOppKJm5Y)
+
+### Branch: [episode_2](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_2)
+
+In this episode we learn more about the standard library and look at how we can refactor last episodes example into a reusable microservice pattern.
