@@ -43,7 +43,7 @@ In this episode we learn more about the standard library and look at how we can 
 
 ## Episode 3 - RESTFul microservices
 
-### [https://youtu.be/fpGgfC085F0](https://youtu.be/fpGgfC085F0)
+### [https://youtu.be/eBeqtmrvVpg](https://youtu.be/eBeqtmrvVpg)
 
 ### Branch: [episode_3](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_3)
 
