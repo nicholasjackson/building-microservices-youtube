@@ -39,3 +39,12 @@ In this episode I show you how to build the simplest service you can using the s
 ### Branch: [episode_2](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_2)
 
 In this episode we learn more about the standard library and look at how we can refactor last episodes example into a reusable microservice pattern.
+
+
+## Episode 3 - RESTFul microservices
+
+### [https://youtu.be/fpGgfC085F0](https://youtu.be/fpGgfC085F0)
+
+### Branch: [episode_3](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_3)
+
+In this episode we start to learn about RESTFul services and reading and writing data using the JSON format.
