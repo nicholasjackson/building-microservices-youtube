@@ -48,3 +48,11 @@ In this episode we learn more about the standard library and look at how we can 
 ### Branch: [episode_3](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_3)
 
 In this episode we start to learn about RESTFul services and reading and writing data using the JSON format.
+
+## Episode 4 - RESTful microservices
+
+### [https://youtu.be/UZbHLVsjpF0](https://youtu.be/UZbHLVsjpF0)
+
+### Branch [episode_4](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_4)
+
+We continue to look at how you can implement RESTFul services with the Standard API
