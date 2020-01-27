@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"github.com/gorilla/mux"
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/handlers"
 	"github.com/nicholasjackson/env"
 	"log"
@@ -23,8 +24,20 @@ func main() {
 	ph := handlers.NewProducts(l)
 
 	// create a new serve mux and register the handlers
-	sm := http.NewServeMux()
-	sm.Handle("/", ph)
+	sm := mux.NewRouter()
+
+	getRouter := sm.Methods(http.MethodGet).Subrouter()
+	getRouter.HandleFunc("/", ph.GetProducts)
+
+	putRouter := sm.Methods(http.MethodPut).Subrouter()
+	putRouter.HandleFunc("/{id:[0-9]+}", ph.UpdateProducts)
+	putRouter.Use(ph.MiddlewareValidateProduct)
+
+	postRouter := sm.Methods(http.MethodPost).Subrouter()
+	postRouter.HandleFunc("/", ph.AddProduct)
+	postRouter.Use(ph.MiddlewareValidateProduct)
+
+	//sm.Handle("/products", ph)
 
 	// create a new server
 	s := http.Server{

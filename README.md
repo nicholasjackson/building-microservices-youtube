@@ -57,3 +57,12 @@ In this episode we start to learn about RESTFul services and reading and writing
 ### Branch [episode_4](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_4)
 
 We continue to look at how you can implement RESTFul services with the Standard API
+
+
+## Episode 5 - Gorilla toolkit
+
+### [https://youtu.be/DD3JlT_u0DM](https://youtu.be/DD3JlT_u0DM)
+
+### Branch [episode_5](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_5)
+
+In this epsode we refactor our Standard library RESTful service and start to implement the Gorill toolkit for routing.
