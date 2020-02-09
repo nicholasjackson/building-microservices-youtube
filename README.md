@@ -1,4 +1,4 @@
-# Building Microservices in Go YouTube
+#  Building Microservices in Go YouTube
 Code repository for my Building Microservices YouTube series 
 [https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_](https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_)
 
@@ -48,3 +48,30 @@ In this episode we learn more about the standard library and look at how we can 
 ### Branch: [episode_3](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_3)
 
 In this episode we start to learn about RESTFul services and reading and writing data using the JSON format.
+
+
+## Episode 4 - RESTful microservices
+
+### [https://youtu.be/UZbHLVsjpF0](https://youtu.be/UZbHLVsjpF0)
+
+### Branch [episode_4](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_4)
+
+We continue to look at how you can implement RESTFul services with the Standard API
+
+
+## Episode 5 - Gorilla toolkit
+
+### [https://youtu.be/DD3JlT_u0DM](https://youtu.be/DD3JlT_u0DM)
+
+### Branch [episode_5](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_5)
+
+In this epsode we refactor our Standard library RESTful service and start to implement the Gorill toolkit for routing.
+
+
+## Episode 6 - JSON Validation
+
+### [https://youtu.be/gE8_-8KoOLc](https://youtu.be/gE8_-8KoOLc)
+
+### Branch [episode_6](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_6)
+
+In this episode we will look at the Go Validator package and how it can be used to validate JSON.
