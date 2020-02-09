@@ -1,4 +1,4 @@
-# Building Microservices in Go YouTube
+#  Building Microservices in Go YouTube
 Code repository for my Building Microservices YouTube series 
 [https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_](https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_)
 
@@ -66,3 +66,21 @@ We continue to look at how you can implement RESTFul services with the Standard 
 ### Branch [episode_5](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_5)
 
 In this epsode we refactor our Standard library RESTful service and start to implement the Gorill toolkit for routing.
+
+
+## Episode 6 - JSON Validation
+
+### [https://youtu.be/gE8_-8KoOLc](https://youtu.be/gE8_-8KoOLc)
+
+### Branch [episode_6](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_6)
+
+In this episode we will look at the Go Validator package and how it can be used to validate JSON.
+
+
+## Episode 7 - Documenting APIs with Swagger
+
+### [https://youtu.be/07XhTqE-j8k](https://youtu.be/07XhTqE-j8k)
+
+### Branch [episode_7](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_7)
+
+This epsiode shows you how you can document the API we have been building over the last couple of weeks. As a bonus we will also look at how we can embed ReDoc to build a nice documentation API direct into our service.
