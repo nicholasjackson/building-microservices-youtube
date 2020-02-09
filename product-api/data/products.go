@@ -11,7 +11,12 @@ import (
 )
 
 // Product defines the structure for an API product
+// swagger:model
 type Product struct {
+	// the id for this user
+	//
+	// required: true
+	// min: 1
 	ID          int     `json:"id"`
 	Name        string  `json:"name" validate:"required"`
 	Description string  `json:"description"`
@@ -70,14 +75,24 @@ func AddProduct(p *Product) {
 	productList = append(productList, p)
 }
 
-func UpdateProduct(id int, p *Product) error {
+func UpdateProduct(p *Product) error {
+	_, pos, err := findProduct(p.ID)
+	if err != nil {
+		return err
+	}
+
+	productList[pos] = p
+
+	return nil
+}
+
+func DeleteProduct(id int) error {
 	_, pos, err := findProduct(id)
 	if err != nil {
 		return err
 	}
 
-	p.ID = id
-	productList[pos] = p
+	productList = append(productList[:pos], productList[pos+1])
 
 	return nil
 }
