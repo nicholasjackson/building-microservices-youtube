@@ -84,3 +84,13 @@ In this episode we will look at the Go Validator package and how it can be used 
 ### Branch [episode_7](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_7)
 
 This epsiode shows you how you can document the API we have been building over the last couple of weeks. As a bonus we will also look at how we can embed ReDoc to build a nice documentation API direct into our service.
+
+
+## Episode 8 - Auto-generating HTTP client code from Swagger documentation
+
+### [https://youtu.be/Zn4joNjqBFc](https://youtu.be/Zn4joNjqBFc)
+
+### Branch [episode_8](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_8)
+
+In this episode we look at how we can use the Swagger API documentation we created in the last episode and generate a Go client SDK. As it turns out I had a little bug in my code
+hope you all find the process of debugging this and finding root cause useful too.
