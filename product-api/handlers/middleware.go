@@ -10,6 +10,8 @@ import (
 // MiddlewareValidateProduct validates the product in the request and calls next if ok
 func (p *Products) MiddlewareValidateProduct(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+		rw.Header().Add("Content-Type", "application/json")
+
 		prod := &data.Product{}
 
 		err := data.FromJSON(prod, r.Body)
