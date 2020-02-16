@@ -6,10 +6,10 @@ Week by week Building Microservices builds on the previous weeks code teaching y
 
 ## Services
 
-### Product API [./product-api](./product_api)
+### Product API [./product-api](./product-api)
 Simple Go based JSON API built using the Gorilla framework. The API allows CRUD based operations on a product list.
 
-### Frontend website [./frontend](./frontent)
+### Frontend website [./frontend](./frontend)
 ReactJS website for presenting the Product API information
 
 ## Series Content
