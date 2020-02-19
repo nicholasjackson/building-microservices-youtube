@@ -1,9 +1,9 @@
-module github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-images
+module github.com/nicholasjackson/building-microservices-youtube/product-images
 
 go 1.13
 
 require (
-	github.com/go-playground/locales v0.13.0 // indirect
+	github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-images v0.0.0-20200215163039-51c246241383
 	github.com/gorilla/mux v1.7.3
 	github.com/hashicorp/go-hclog v0.11.0
 	github.com/nicholasjackson/env v0.6.0

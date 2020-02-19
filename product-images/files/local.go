@@ -35,7 +35,7 @@ func (l *Local) Save(path string, contents io.Reader) error {
 
 	// get the directory and make sure it exists
 	d := filepath.Dir(fp)
-	err := os.MkdirAll(d, os.ModeDir)
+	err := os.MkdirAll(d, os.ModePerm)
 	if err != nil {
 		return xerrors.Errorf("Unable to create directory: %w", err)
 	}
@@ -61,7 +61,6 @@ func (l *Local) Save(path string, contents io.Reader) error {
 
 	// write the contents to the new file
 	// ensure that we are not writing greater than max bytes
-
 	_, err = io.Copy(f, contents)
 	if err != nil {
 		return xerrors.Errorf("Unable to write to file: %w", err)

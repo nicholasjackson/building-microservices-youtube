@@ -1,3 +1,6 @@
+github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition v0.0.0-20200215163039-51c246241383 h1:ouUdx96KN6Epiz4lXEzXgxN3C9v500fhXP8h84VOeoc=
+github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-images v0.0.0-20200215163039-51c246241383 h1:vcDd9haUoule9h5h9dzbJ+pQac0YCmD2FzdcPC9CBnY=
+github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-images v0.0.0-20200215163039-51c246241383/go.mod h1:J1G8OoaxVRRHbkb3J/qwpR5bhp2jlIoaCpr/M6c2zew=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751 h1:JYp7IbQjafoB+tBA3gMyHYHrpOtNuDiK/uB5uXxq5wM=
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
@@ -39,6 +42,8 @@ github.com/matttproud/golang_protobuf_extensions v1.0.1/go.mod h1:D8He9yQNgCq6Z5
 github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
 github.com/modern-go/reflect2 v1.0.1/go.mod h1:bx2lNnkwVCuqBIxFjflWJWanXIb3RllmbCylyMrvgv0=
 github.com/mwitkow/go-conntrack v0.0.0-20161129095857-cc309e4a2223/go.mod h1:qRWi+5nqEBWmkhHvq77mSJWrCKwh8bxhgT7d/eI7P4U=
+github.com/nicholasjackson/Building-Microservices-with-Go-Second-Edition v0.0.0-20200116092450-75ff54aa2901 h1:wH8jOP6RkjZAS0+JbAaf79kDr594qTKJBlddJt3DrMk=
+github.com/nicholasjackson/building-microservices-youtube v0.0.0-20200216164403-ae93fd77577f h1:5mxVlDIkjNrX1aaqRBvizVHqXedgxetz80evr6z304I=
 github.com/nicholasjackson/env v0.6.0 h1:6xdio52m7cKRtgZPER6NFeBZxicR88rx5a+5Jl4/qus=
 github.com/nicholasjackson/env v0.6.0/go.mod h1:/GtSb9a/BDUCLpcnpauN0d/Bw5ekSI1vLC1b9Lw0Vyk=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=

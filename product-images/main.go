@@ -7,16 +7,16 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-images/files"
-	"github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-images/handlers"
 	"github.com/gorilla/mux"
 	hclog "github.com/hashicorp/go-hclog"
+	"github.com/nicholasjackson/building-microservices-youtube/product-images/files"
+	"github.com/nicholasjackson/building-microservices-youtube/product-images/handlers"
 	"github.com/nicholasjackson/env"
 )
 
 var bindAddress = env.String("BIND_ADDRESS", false, ":9090", "Bind address for the server")
 var logLevel = env.String("LOG_LEVEL", false, "debug", "Log output level for the server [debug, info, trace]")
-var basePath = env.String("BASE_PATH", false, "/tmp/images", "Base path to save images")
+var basePath = env.String("BASE_PATH", false, "./imagestore", "Base path to save images")
 
 func main() {
 
@@ -46,14 +46,17 @@ func main() {
 	// create a new serve mux and register the handlers
 	sm := mux.NewRouter()
 
-	getRouter := sm.Methods(http.MethodGet).Subrouter()
-
+	// filename regex: {filename:[a-zA-Z]+\\.[a-z]{3}}
 	// problem with FileServer is that it is dumb
-	getRouter.Handle("/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", http.FileServer(http.Dir(*basePath)))
-	getRouter.Use(handlers.GZipResponseMiddleware)
+	ph := sm.Methods(http.MethodPost).Subrouter()
+	ph.HandleFunc("/images/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", fh.ServeHTTP)
 
-	postRouter := sm.Methods(http.MethodPost).Subrouter()
-	postRouter.Handle("/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", fh)
+	// get files
+	gh := sm.Methods(http.MethodGet).Subrouter()
+	gh.Handle(
+		"/images/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}",
+		http.StripPrefix("/images/", http.FileServer(http.Dir(*basePath))),
+	)
 
 	// create a new server
 	s := http.Server{

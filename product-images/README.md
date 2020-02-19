@@ -2,14 +2,8 @@
 
 ## Uploading 
 
-Note: standard `-d` strips new lines
+Note: need to use `--data-binary` to ensure file is not converted to text
 
 ```
-curl -vv localhost:9090/1/go.mod -X PUT --data-binary @$PWD/go.mo
-```
-
-## Downloading with compression
-
-```
-curl -v localhost:9090/1/go.mod --compressed -o file.tmp
+curl -vv localhost:9090/1/go.mod -X PUT --data-binary @test.png
 ```
