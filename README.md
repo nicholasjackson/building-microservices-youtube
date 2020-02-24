@@ -94,3 +94,31 @@ This epsiode shows you how you can document the API we have been building over t
 
 In this episode we look at how we can use the Swagger API documentation we created in the last episode and generate a Go client SDK. As it turns out I had a little bug in my code
 hope you all find the process of debugging this and finding root cause useful too.
+
+
+## Episode 9 - 9 CORS (Cross-Origin Resource Sharing)
+
+### [https://youtu.be/RlYoy_RiYPw](https://youtu.be/RlYoy_RiYPw)
+
+### Branch [episode_9](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_9)
+
+In this episode we are going to take a look at CORS (Cross-Origin Resource Sharing). CORS is a security feature built into web browsers which restricts upstream requests to sites on different domains. We look at a typical example of a React website on one domain calling a back end API, see the impact of CORS and how to solve it.
+
+
+## Episode 10 - 10 Serving and uploading files
+
+### [https://youtu.be/ctmhYJpGsgU](https://youtu.be/ctmhYJpGsgU)
+
+### Branch [episode_10](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_10)
+
+In this episode you will learn how to upload and serve files using the Go standard library.
+
+
+
+## Episode 11 - 11 Handling multi-part form uploads
+
+### [https://youtu.be/_7-IhHMptNo](https://youtu.be/_7-IhHMptNo)
+
+### Branch [episode_11](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_10)
+
+In this episode you will learn how to handle multi-part form uploads. Mult-part forms used to be common place as they are the basic way that browsers would upload data to a server. This pattern has fallen out of fashion as most moder data transfer to the server is done using XHR requests. There might still be a case when you need to know this though.
