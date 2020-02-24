@@ -2,9 +2,17 @@
 Code repository for my Building Microservices YouTube series 
 [https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_](https://www.youtube.com/playlist?list=PLmD8u-IFdreyh6EUfevBcbiuCKzFk0EW_)
 
-Week by week Building Microservices builds on the previous weeks code teaching you how to build a multi-tier microservice system. The code structure for the course is one of a mono repo. To make it simple to follow along, each episode has its own branch showing progress to date. 
+Week by week Building Microservices builds on the previous weeks code teaching you how to build a multi-tier microservice system. The code structure for the course is one of a mono repo. To make it simple to follow along, each episode has its own branch showing progress to date.
 
-## Series Content:
+## Services
+
+### Product API [./product-api](./product-api)
+Simple Go based JSON API built using the Gorilla framework. The API allows CRUD based operations on a product list.
+
+### Frontend website [./frontend](./frontend)
+ReactJS website for presenting the Product API information
+
+## Series Content
 
 Over the weeks we will look at the following topics, teaching you everything you need to know regarding building microservices with the go programming language:
 
@@ -112,7 +120,6 @@ In this episode we are going to take a look at CORS (Cross-Origin Resource Shari
 ### Branch [episode_10](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_10)
 
 In this episode you will learn how to upload and serve files using the Go standard library.
-
 
 
 ## Episode 11 - 11 Handling multi-part form uploads
