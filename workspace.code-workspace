@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "frontend"
+		},
+		{
+			"path": "product-images"
+		},
+		{
+			"path": "product-api"
+		}
+	],
+	"remoteAuthority": "wsl+Ubuntu",
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
