@@ -135,7 +135,7 @@ In this episode you will learn how to handle multi-part form uploads. Mult-part 
 
 ### [https://youtu.be/GtSg1H7SU5Y](https://youtu.be/GtSg1H7SU5Y)
 
-### Branch [episode_11](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_12)
+### Branch [episode_12](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_12)
 
 In this episode we walk through how to wrap a http.ResponseWriter to enable Gzip compression for HTTP responses.
 
