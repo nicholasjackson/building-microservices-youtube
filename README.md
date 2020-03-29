@@ -144,3 +144,23 @@ https://developer.mozilla.org/en-US/d...
 
 HTTP ResponseWriter:
 https://golang.org/pkg/net/http/#Resp...
+
+
+## Episode 13 - Introduction to gRPC and Protocol Buffers
+
+gRPC is a high performance framework for client server applications. It is designed to be cross platform and is an awesome alternative to RESTful services.
+
+In this episode we take a quick look at gRPC and Protocol Buffers, and how you can use them to build a simple API. This is the first video in a series of content where we dig into gRPC services.
+
+gRPC Framework:
+https://grpc.io/
+
+Protocol Buffers v3 Language Guide:
+https://developers.google.com/protocol-buffers/docs/proto3
+
+Protocol Buffers v3 Encoding format:
+https://developers.google.com/protocol-buffers/docs/encoding
+
+### [https://youtu.be/pMgty_RYIOc](https://youtu.be/pMgty_RYIOc)
+
+### Branch [episode_13](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_13)
