@@ -58,6 +58,15 @@ type productResponseWrapper struct {
 type noContentResponseWrapper struct {
 }
 
+// swagger:parameters listProducts listSingleProduct
+type productQueryParam struct {
+	// Currency used when returning the price of the product,
+	// when not specified currency is returned in GBP.
+	// in: query
+	// required: false
+	Currency string
+}
+
 // swagger:parameters updateProduct createProduct
 type productParamsWrapper struct {
 	// Product data structure to Update or Create.

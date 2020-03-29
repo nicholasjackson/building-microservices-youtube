@@ -16,7 +16,10 @@ func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
 	p.l.Println("[DEBUG] get all records")
 	rw.Header().Add("Content-Type", "application/json")
 
-	prods := data.GetProducts()
+	// get the currency from the query string
+	cur := r.URL.Query().Get("currency")
+
+	prods := data.GetProducts(cur)
 
 	err := data.ToJSON(prods, rw)
 	if err != nil {
@@ -39,7 +42,10 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 
 	p.l.Println("[DEBUG] get record id", id)
 
-	prod, err := data.GetProductByID(id)
+	// get the currency from the query string
+	cur := r.URL.Query().Get("currency")
+
+	prod, err := data.GetProductByID(id, cur)
 
 	switch err {
 	case nil:

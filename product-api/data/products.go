@@ -44,15 +44,16 @@ type Product struct {
 // Products defines a slice of Product
 type Products []*Product
 
-// GetProducts returns all products from the database
-func GetProducts() Products {
+// GetProducts returns all products from the database and convert
+// the price for the given currency
+func GetProducts(currency string) Products {
 	return productList
 }
 
 // GetProductByID returns a single product which matches the id from the
-// database.
+// database. Product price will be returned converted for the given currency.
 // If a product is not found this function returns a ProductNotFound error
-func GetProductByID(id int) (*Product, error) {
+func GetProductByID(id int, currency string) (*Product, error) {
 	i := findIndexByProductID(id)
 	if id == -1 {
 		return nil, ErrProductNotFound
