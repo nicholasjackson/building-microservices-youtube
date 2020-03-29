@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+service Currency {
+    // GetRate returns the exchange rate for the two provided currency codes 
+    rpc GetRate(RateRequest) returns (RateResponse);
+}
+
+// RateRequest defines the request for a GetRate call
+message RateRequest {
+    // Base is the base currency code for the rate
+    string Base = 1;
+    // Destination is the destination currency code for the rate
+    string Destination = 2;
+}
+
+// RateResponse is the response from a GetRate call, it contains
+// rate which is a floating point number and can be used to convert between the 
+// two currencies specified in the request.
+message RateResponse {
+    float rate = 1;
+}
