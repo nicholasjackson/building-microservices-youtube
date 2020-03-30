@@ -17,11 +17,12 @@ type KeyProduct struct{}
 type Products struct {
 	l *log.Logger
 	v *data.Validation
+	d *data.ProductsDB
 }
 
 // NewProducts returns a new products handler with the given logger
-func NewProducts(l *log.Logger, v *data.Validation) *Products {
-	return &Products{l, v}
+func NewProducts(v *data.Validation, d *data.ProductsDB, l *log.Logger) *Products {
+	return &Products{l, v, d}
 }
 
 // ErrInvalidProductPath is an error message when the product path is not valid

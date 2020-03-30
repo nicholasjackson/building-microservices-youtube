@@ -9,15 +9,18 @@ import (
 	"time"
 
 	"github.com/go-openapi/runtime/middleware"
+	"google.golang.org/grpc"
 
 	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	protos "github.com/nicholasjackson/building-microservices-youtube/currency/protos/currency"
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/data"
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/handlers"
 	"github.com/nicholasjackson/env"
 )
 
 var bindAddress = env.String("BIND_ADDRESS", false, ":9090", "Bind address for the server")
+var currencyAddress = env.String("CURRENCY_ADDRESS", false, "localhost:9092", "URI for the Currency service")
 
 func main() {
 
@@ -26,14 +29,26 @@ func main() {
 	l := log.New(os.Stdout, "products-api ", log.LstdFlags)
 	v := data.NewValidation()
 
+	// create the currency service client
+	conn, err := grpc.Dial(*currencyAddress, grpc.WithInsecure())
+	if err != nil {
+		l.Printf("Unable to create client for currency service %s", err)
+		os.Exit(1)
+	}
+	defer conn.Close()
+
+	cc := protos.NewCurrencyClient(conn)
+	pd := data.NewProductsDB(cc)
+
 	// create the handlers
-	ph := handlers.NewProducts(l, v)
+	ph := handlers.NewProducts(v, pd, l)
 
 	// create a new serve mux and register the handlers
 	sm := mux.NewRouter()
 
 	// handlers for API
 	getR := sm.Methods(http.MethodGet).Subrouter()
+	getR.HandleFunc("/products", ph.ListAll).Queries("currency", "{[A-Z]{3}}")
 	getR.HandleFunc("/products", ph.ListAll)
 	getR.HandleFunc("/products/{id:[0-9]+}", ph.ListSingle)
 
