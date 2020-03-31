@@ -3,6 +3,7 @@ syntax = "proto3";
 service Currency {
     // GetRate returns the exchange rate for the two provided currency codes 
     rpc GetRate(RateRequest) returns (RateResponse);
+    rpc SubscribeRates(stream RateRequest) returns (stream RateResponse);
 }
 
 // RateRequest defines the request for a GetRate call
