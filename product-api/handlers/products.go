@@ -2,11 +2,11 @@ package handlers
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/hashicorp/go-hclog"
 	"github.com/nicholasjackson/building-microservices-youtube/product-api/data"
 )
 
@@ -15,13 +15,13 @@ type KeyProduct struct{}
 
 // Products handler for getting and updating products
 type Products struct {
-	l *log.Logger
+	l hclog.Logger
 	v *data.Validation
 	d *data.ProductsDB
 }
 
 // NewProducts returns a new products handler with the given logger
-func NewProducts(v *data.Validation, d *data.ProductsDB, l *log.Logger) *Products {
+func NewProducts(v *data.Validation, d *data.ProductsDB, l hclog.Logger) *Products {
 	return &Products{l, v, d}
 }
 

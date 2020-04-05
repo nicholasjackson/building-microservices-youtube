@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/go-openapi/runtime/middleware"
+	"github.com/hashicorp/go-hclog"
 	"google.golang.org/grpc"
 
 	gohandlers "github.com/gorilla/handlers"
@@ -26,19 +27,19 @@ func main() {
 
 	env.Parse()
 
-	l := log.New(os.Stdout, "products-api ", log.LstdFlags)
+	l := hclog.Default()
 	v := data.NewValidation()
 
 	// create the currency service client
 	conn, err := grpc.Dial(*currencyAddress, grpc.WithInsecure())
 	if err != nil {
-		l.Printf("Unable to create client for currency service %s", err)
+		l.Info("Unable to create client for currency service", "error", err)
 		os.Exit(1)
 	}
 	defer conn.Close()
 
 	cc := protos.NewCurrencyClient(conn)
-	pd := data.NewProductsDB(cc)
+	pd := data.NewProductsDB(cc, l)
 
 	// create the handlers
 	ph := handlers.NewProducts(v, pd, l)
@@ -50,6 +51,8 @@ func main() {
 	getR := sm.Methods(http.MethodGet).Subrouter()
 	getR.HandleFunc("/products", ph.ListAll).Queries("currency", "{[A-Z]{3}}")
 	getR.HandleFunc("/products", ph.ListAll)
+
+	getR.HandleFunc("/products/{id:[0-9]+}", ph.ListSingle).Queries("currency", "{[A-Z]{3}}")
 	getR.HandleFunc("/products/{id:[0-9]+}", ph.ListSingle)
 
 	putR := sm.Methods(http.MethodPut).Subrouter()
@@ -75,21 +78,21 @@ func main() {
 
 	// create a new server
 	s := http.Server{
-		Addr:         *bindAddress,      // configure the bind address
-		Handler:      ch(sm),            // set the default handler
-		ErrorLog:     l,                 // set the logger for the server
-		ReadTimeout:  5 * time.Second,   // max time to read request from the client
-		WriteTimeout: 10 * time.Second,  // max time to write response to the client
-		IdleTimeout:  120 * time.Second, // max time for connections using TCP Keep-Alive
+		Addr:         *bindAddress,                                     // configure the bind address
+		Handler:      ch(sm),                                           // set the default handler
+		ErrorLog:     l.StandardLogger(&hclog.StandardLoggerOptions{}), // set the logger for the server
+		ReadTimeout:  5 * time.Second,                                  // max time to read request from the client
+		WriteTimeout: 10 * time.Second,                                 // max time to write response to the client
+		IdleTimeout:  120 * time.Second,                                // max time for connections using TCP Keep-Alive
 	}
 
 	// start the server
 	go func() {
-		l.Println("Starting server on port 9090")
+		l.Info("Starting server on port 9090")
 
 		err := s.ListenAndServe()
 		if err != nil {
-			l.Printf("Error starting server: %s\n", err)
+			l.Error("Unable to start server: %s\n", err)
 			os.Exit(1)
 		}
 	}()

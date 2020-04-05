@@ -17,14 +17,14 @@ func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
 
 	// get the currency from the query string
 	cur := r.URL.Query().Get("currency")
-	p.l.Println("[DEBUG] get all records, use currency", cur)
+	p.l.Debug("Get all records", "currency", cur)
 
 	prods := p.d.GetProducts(cur)
 
 	err := data.ToJSON(prods, rw)
 	if err != nil {
 		// we should never be here but log the error just incase
-		p.l.Println("[ERROR] serializing product", err)
+		p.l.Error("Serializing product", "error", err)
 	}
 }
 
@@ -40,7 +40,7 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 
 	id := getProductID(r)
 
-	p.l.Println("[DEBUG] get record id", id)
+	p.l.Debug("Get record", "id", id)
 
 	// get the currency from the query string
 	cur := r.URL.Query().Get("currency")
@@ -51,13 +51,13 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 	case nil:
 
 	case data.ErrProductNotFound:
-		p.l.Println("[ERROR] fetching product", err)
+		p.l.Error("Fetching product", "error", err)
 
 		rw.WriteHeader(http.StatusNotFound)
 		data.ToJSON(&GenericError{Message: err.Error()}, rw)
 		return
 	default:
-		p.l.Println("[ERROR] fetching product", err)
+		p.l.Error("Fetching product", "error", err)
 
 		rw.WriteHeader(http.StatusInternalServerError)
 		data.ToJSON(&GenericError{Message: err.Error()}, rw)
@@ -67,6 +67,6 @@ func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
 	err = data.ToJSON(prod, rw)
 	if err != nil {
 		// we should never be here but log the error just incase
-		p.l.Println("[ERROR] serializing product", err)
+		p.l.Error("Serializing product", "error", err)
 	}
 }
