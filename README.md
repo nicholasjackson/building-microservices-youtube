@@ -164,3 +164,18 @@ https://developers.google.com/protocol-buffers/docs/encoding
 ### [https://youtu.be/pMgty_RYIOc](https://youtu.be/pMgty_RYIOc)
 
 ### Branch [episode_13](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_13)
+
+
+## Episode 14 - gRPC Client Connections
+
+In this episode we take a quick look at how you can connect to gRPC services in Go.
+
+Protocol Buffers Enum Specification:
+https://developers.google.com/protocol-buffers/docs/reference/proto3-spec#enum_definition
+
+gRPC Creating gRPC Clients:
+https://grpc.io/docs/tutorials/basic/go/#client
+
+### [https://youtu.be/oTBcd5J0VYU](https://youtu.be/oTBcd5J0VYU)
+
+### Branch [episode_14](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_14)
