@@ -15,7 +15,7 @@
 // swagger:meta
 package handlers
 
-import "github.com/PacktPublishing/Building-Microservices-with-Go-Second-Edition/product-api/8_validation/data"
+import "github.com/nicholasjackson/building-microservices-youtube/product-api/data"
 
 //
 // NOTE: Types defined here are purely for documentation purposes
