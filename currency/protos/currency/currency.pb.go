@@ -236,6 +236,7 @@ func (m *RateResponse) GetRate() float32 {
 }
 
 func init() {
+
 	proto.RegisterEnum("Currencies", Currencies_name, Currencies_value)
 	proto.RegisterType((*RateRequest)(nil), "RateRequest")
 	proto.RegisterType((*RateResponse)(nil), "RateResponse")
