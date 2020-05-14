@@ -180,3 +180,32 @@ https://grpc.io/docs/tutorials/basic/go/#client
 ### [https://youtu.be/oTBcd5J0VYU](https://youtu.be/oTBcd5J0VYU)
 
 ### Branch [episode_14](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_14)
+
+
+## Episode 15 - Refactoring Part 1/3
+
+This video is part 1 of 3 where we start to clean up the code base a little before continuing to develop our gRPC service. Refactoring is a natural part of software development, it is difficult to get things right first time all the time. Rather than spend too much time on the perfect solution I like to go with the flow and clean up at a later date.
+
+As part of our refactoring we look at the encoding/xml and how it is very similar in use to encoding/json.
+
+Encoding/XML:
+https://golang.org/pkg/encoding/xml/
+
+### [https://youtu.be/Vl88R9acq-Y](https://youtu.be/Vl88R9acq-Y)
+
+### Branch [episode_15_1](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_15_1)
+
+
+## Episode 15 - Refactoring Part 2/3
+
+In this episode I continue to refactor the code base so far. These videos are really just intended to ensure that you are not completely confused when looking at the source code changes between episode 14 and episode 16.
+
+Source Code:
+https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_15_2
+
+Encoding/XML:
+https://golang.org/pkg/encoding/xml/
+
+### [https://youtu.be/QBl8LZ0Rems](https://youtu.be/QBl8LZ0Rems)
+
+### Branch [episode_15_2](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_15_2)
