@@ -181,6 +181,7 @@ https://grpc.io/docs/tutorials/basic/go/#client
 
 ### Branch [episode_14](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_14)
 
+
 ## Episode 15 - Refactoring Part 1/3
 
 This video is part 1 of 3 where we start to clean up the code base a little before continuing to develop our gRPC service. Refactoring is a natural part of software development, it is difficult to get things right first time all the time. Rather than spend too much time on the perfect solution I like to go with the flow and clean up at a later date.
@@ -208,7 +209,6 @@ https://golang.org/pkg/encoding/xml/
 ### [https://youtu.be/QBl8LZ0Rems](https://youtu.be/QBl8LZ0Rems)
 
 ### Branch [episode_15_2](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_15_2)
-
 
 ## Episode 15 - Refactoring Part 3/3
 

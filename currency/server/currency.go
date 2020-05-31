@@ -68,5 +68,4 @@ func (c *Currency) SubscribeRates(src protos.Currency_SubscribeRatesServer) erro
 
 		time.Sleep(5 * time.Second)
 	}
-
 }
