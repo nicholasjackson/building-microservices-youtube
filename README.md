@@ -209,3 +209,28 @@ https://golang.org/pkg/encoding/xml/
 ### [https://youtu.be/QBl8LZ0Rems](https://youtu.be/QBl8LZ0Rems)
 
 ### Branch [episode_15_2](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_15_2)
+
+## Episode 15 - Refactoring Part 3/3
+
+In this episode I finalize the refactoring for the code base.
+
+### [https://youtu.be/ARvOyAsuFog](https://youtu.be/ARvOyAsuFog)
+
+### Branch [episode_15_2](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_15_2)
+
+
+## Episode 16 - gRPC Bi-directional streaming, part 1/2
+
+In this video we start to look at gRPC bi-directional streaming
+
+gRPC streaming allows you to independently receive streamed messages from the client and send a response to it. This episode looks at the basics of streaming API by adding an update to our currency service.
+
+Server-side streaming:
+https://grpc.io/docs/languages/go/basics/#server-side-streaming-rpc
+
+Client-side streaming:
+https://grpc.io/docs/languages/go/basics/#client-side-streaming-rpc
+
+### [https://youtu.be/4ohwkWVgEZM](https://youtu.be/4ohwkWVgEZM)
+
+### Branch [episode_16](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_16)
