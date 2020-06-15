@@ -95,6 +95,6 @@ You can send a message to the server using the following payload
 ```
 {
   "Base": "EUR",
-  "Destination": "EUR"
+  "Destination": "GBP"
 }
 ```
