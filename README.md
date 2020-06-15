@@ -234,3 +234,23 @@ https://grpc.io/docs/languages/go/basics/#client-side-streaming-rpc
 ### [https://youtu.be/4ohwkWVgEZM](https://youtu.be/4ohwkWVgEZM)
 
 ### Branch [episode_16](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_16)
+
+
+## Episode 17 - gRPC Bi-directional streaming, part 2/2
+
+In this video we continue to look at gRPC bi-directional streaming.
+
+You will see how to take the simple example in the first part and how it can be implemented into the Products API to support
+independent client and server streams. The simple example allows a client in the Product API to subscribe for currency
+rate changes in the Currency service. Whenever a rate changes the currency service broadcasts this change to all
+interested subscribers. 
+
+Server-side streaming:
+https://grpc.io/docs/languages/go/basics/#server-side-streaming-rpc
+
+Client-side streaming:
+https://grpc.io/docs/languages/go/basics/#client-side-streaming-rpc
+
+### [https://youtu.be/MT5tXSKa-KY](https://youtu.be/MT5tXSKa-KY)
+
+### Branch [episode_17](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_17)

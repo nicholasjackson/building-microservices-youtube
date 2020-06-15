@@ -2,11 +2,12 @@ package files
 
 import (
 	"bytes"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func setupLocal(t *testing.T) (*Local, string, func()) {
@@ -16,7 +17,7 @@ func setupLocal(t *testing.T) (*Local, string, func()) {
 		t.Fatal(err)
 	}
 
-	l, err := NewLocal(dir)
+	l, err := NewLocal(dir, 10000)
 	if err != nil {
 		t.Fatal(err)
 	}
