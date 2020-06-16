@@ -8,6 +8,8 @@ import (
 	"github.com/hashicorp/go-hclog"
 	"github.com/nicholasjackson/building-microservices-youtube/currency/data"
 	protos "github.com/nicholasjackson/building-microservices-youtube/currency/protos/currency"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // Currency is a gRPC server it implements the methods defined by the CurrencyServer interface
@@ -54,6 +56,19 @@ func (c *Currency) handleUpdates() {
 // for the two given currencies.
 func (c *Currency) GetRate(ctx context.Context, rr *protos.RateRequest) (*protos.RateResponse, error) {
 	c.log.Info("Handle request for GetRate", "base", rr.GetBase(), "dest", rr.GetDestination())
+
+	// Validate parameters base currency can not be the same as destination
+	if rr.Base == rr.Destination {
+		// create the grpc error
+		err := status.Errorf(
+			codes.InvalidArgument,
+			"Base rate %s can not be equal to destination rate %s",
+			rr.Base.String(),
+			rr.Destination.String(),
+		)
+
+		return nil, err
+	}
 
 	rate, err := c.rates.GetRate(rr.GetBase().String(), rr.GetDestination().String())
 	if err != nil {
