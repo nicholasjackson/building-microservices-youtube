@@ -42,7 +42,13 @@ func (c *Currency) handleUpdates() {
 					c.log.Error("Unable to get update rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
 				}
 
-				err = k.Send(&protos.RateResponse{Base: rr.Base, Destination: rr.Destination, Rate: r})
+				// create the response and send to the client
+				err = k.Send(&protos.StreamingRateResponse{
+					Message: &protos.StreamingRateResponse_RateResponse{
+						RateResponse: &protos.RateResponse{Base: rr.Base, Destination: rr.Destination, Rate: r},
+					},
+				})
+
 				if err != nil {
 					c.log.Error("Unable to send updated rate", "base", rr.GetBase().String(), "destination", rr.GetDestination().String())
 				}
@@ -59,7 +65,7 @@ func (c *Currency) GetRate(ctx context.Context, rr *protos.RateRequest) (*protos
 
 	// Validate parameters base currency can not be the same as destination
 	if rr.Base == rr.Destination {
-		// create the grpc error
+		// create the grpc error and return to the client
 		err := status.Errorf(
 			codes.InvalidArgument,
 			"Base rate %s can not be equal to destination rate %s",
@@ -80,7 +86,6 @@ func (c *Currency) GetRate(ctx context.Context, rr *protos.RateRequest) (*protos
 
 // SubscribeRates implments the gRPC bidirection streaming method for the server
 func (c *Currency) SubscribeRates(src protos.Currency_SubscribeRatesServer) error {
-
 	// handle client messages
 	for {
 		rr, err := src.Recv() // Recv is a blocking method which returns on client data
@@ -98,11 +103,33 @@ func (c *Currency) SubscribeRates(src protos.Currency_SubscribeRatesServer) erro
 
 		c.log.Info("Handle client request", "request_base", rr.GetBase(), "request_dest", rr.GetDestination())
 
+		// get the current subscriptions for this client
 		rrs, ok := c.subscriptions[src]
 		if !ok {
 			rrs = []*protos.RateRequest{}
 		}
 
+		// check if already in the subscribe list and return a custom gRPC error
+		for _, r := range rrs {
+			// if we already have subscribe to this currency return an error
+			if r.Base == rr.Base && r.Destination == rr.Destination {
+				c.log.Error("Subscription already active", "base", rr.Base.String(), "dest", rr.Destination.String())
+
+				grpcError := status.New(codes.InvalidArgument, "Subscription already active for rate")
+				grpcError, err = grpcError.WithDetails(rr)
+				if err != nil {
+					c.log.Error("Unable to add metadata to error message", "error", err)
+					continue
+				}
+
+				// Can't return error as that will terminate the connection, instead must send an error which
+				// can be handled by the client Recv stream.
+				rrs := &protos.StreamingRateResponse_Error{Error: &protos.SubscribeError{Error: grpcError.Proto()}}
+				src.Send(&protos.StreamingRateResponse{Message: rrs})
+			}
+		}
+
+		// all ok add to the collection
 		rrs = append(rrs, rr)
 		c.subscriptions[src] = rrs
 	}

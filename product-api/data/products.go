@@ -57,6 +57,10 @@ type ProductsDB struct {
 	client   protos.Currency_SubscribeRatesClient
 }
 
+// NewProductsDB returns a Data object for CRUD operations on
+// Products data.
+// This type also handles conversion of currencies through integraiton with the
+// currency service.
 func NewProductsDB(c protos.CurrencyClient, l hclog.Logger) *ProductsDB {
 	pb := &ProductsDB{c, l, make(map[string]float64), nil}
 
@@ -69,20 +73,48 @@ func (p *ProductsDB) handleUpdates() {
 	sub, err := p.currency.SubscribeRates(context.Background())
 	if err != nil {
 		p.log.Error("Unable to subscribe for rates", "error", err)
+		return
 	}
 
 	p.client = sub
 
 	for {
-		rr, err := sub.Recv()
-		p.log.Info("Recieved updated rate from server", "dest", rr.GetDestination().String())
+		// Recv returns a StreamingRateResponse which can contain one of two messages
+		// RateResponse or an Error.
+		// We need to handle each case separately
+		srr, err := sub.Recv()
 
+		// handle connection errors
+		// this is normally terminal requires a reconnect
 		if err != nil {
-			p.log.Error("Error receiving message", "error", err)
+			p.log.Error("Error while waiting for message", "error", err)
 			return
 		}
 
-		p.rates[rr.Destination.String()] = rr.Rate
+		// handle a returned error message
+		if ge := srr.GetError(); ge != nil {
+			sre := status.FromProto(ge.Error)
+
+			if sre.Code() == codes.InvalidArgument {
+				errDetails := ""
+				// get the RateRequest serialized in the error response
+				// Details is a collection but we are only returning a single item
+				if d := sre.Details(); len(d) > 0 {
+					p.log.Error("Deets", "d", d)
+					if rr, ok := d[0].(*protos.RateRequest); ok {
+						errDetails = fmt.Sprintf("base: %s destination: %s", rr.GetBase().String(), rr.GetDestination().String())
+					}
+				}
+
+				p.log.Error("Received error from currency service rate subscription", "error", ge.Error.Message, "details", errDetails)
+			}
+		}
+
+		// handle a rate response
+		if rr := srr.GetRateResponse(); rr != nil {
+			p.log.Info("Recieved updated rate from server", "dest", rr.GetDestination().String())
+			p.rates[rr.Destination.String()] = rr.Rate
+		}
 	}
 }
 
@@ -183,9 +215,11 @@ func findIndexByProductID(id int) int {
 
 func (p *ProductsDB) getRate(destination string) (float64, error) {
 	// if cached return
-	if r, ok := p.rates[destination]; ok {
-		return r, nil
-	}
+	/*
+		if r, ok := p.rates[destination]; ok {
+			return r, nil
+		}
+	*/
 
 	rr := &protos.RateRequest{
 		Base:        protos.Currencies(protos.Currencies_value["EUR"]),
@@ -212,7 +246,10 @@ func (p *ProductsDB) getRate(destination string) (float64, error) {
 	p.rates[destination] = resp.Rate
 
 	// subscribe for updates
-	p.client.Send(rr)
+	err = p.client.Send(rr)
+	if err != nil {
+		return -1, err
+	}
 
 	return resp.Rate, err
 }
