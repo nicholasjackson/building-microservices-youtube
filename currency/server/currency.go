@@ -124,7 +124,7 @@ func (c *Currency) SubscribeRates(src protos.Currency_SubscribeRatesServer) erro
 
 				// Can't return error as that will terminate the connection, instead must send an error which
 				// can be handled by the client Recv stream.
-				rrs := &protos.StreamingRateResponse_Error{Error: &protos.SubscribeError{Error: grpcError.Proto()}}
+				rrs := &protos.StreamingRateResponse_Error{Error: grpcError.Proto()}
 				src.Send(&protos.StreamingRateResponse{Message: rrs})
 			}
 		}

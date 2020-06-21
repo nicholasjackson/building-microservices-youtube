@@ -34,12 +34,8 @@ message RateResponse {
 message StreamingRateResponse {
   oneof message {
     RateResponse rate_response = 1;
-    SubscribeError error = 2;
+    google.rpc.Status error = 2;
   }
-}
-
-message SubscribeError {
-   google.rpc.Status error = 1;
 }
 
 // Currencies is an enum which represents the allowed currencies for the API

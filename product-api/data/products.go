@@ -93,7 +93,7 @@ func (p *ProductsDB) handleUpdates() {
 
 		// handle a returned error message
 		if ge := srr.GetError(); ge != nil {
-			sre := status.FromProto(ge.Error)
+			sre := status.FromProto(ge)
 
 			if sre.Code() == codes.InvalidArgument {
 				errDetails := ""
@@ -106,7 +106,7 @@ func (p *ProductsDB) handleUpdates() {
 					}
 				}
 
-				p.log.Error("Received error from currency service rate subscription", "error", ge.Error.Message, "details", errDetails)
+				p.log.Error("Received error from currency service rate subscription", "error", ge.GetMessage(), "details", errDetails)
 			}
 		}
 
