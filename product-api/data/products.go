@@ -78,11 +78,11 @@ func UpdateProduct(p Product) error {
 }
 
 // AddProduct adds a new product to the database
-func AddProduct(p Product) {
+func AddProduct(p *Product) {
 	// get the next id in sequence
 	maxID := productList[len(productList)-1].ID
 	p.ID = maxID + 1
-	productList = append(productList, &p)
+	productList = append(productList, p)
 }
 
 // DeleteProduct deletes a product from the database
