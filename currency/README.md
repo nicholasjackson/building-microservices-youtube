@@ -14,6 +14,7 @@ sudo apt install protobuf-compiler
 brew install protoc
 ```
 
+### All systems
 Then install the Go gRPC plugin:
 
 ```shell
