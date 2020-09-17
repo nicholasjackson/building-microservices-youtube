@@ -72,12 +72,16 @@ func (c *Currency) SubscribeRates(src protos.Currency_SubscribeRatesServer) erro
 		// io.EOF signals that the client has closed the connection
 		if err == io.EOF {
 			c.log.Info("Client has closed connection")
+			// if connection closed, then we remove clinet from subscribers
+			delete(c.subscriptions, src)
 			break
 		}
 
 		// any other error means the transport between the server and client is unavailable
 		if err != nil {
 			c.log.Error("Unable to read from client", "error", err)
+			// if get any kind of error, then we remove clinet from subscribers
+			delete(c.subscriptions, src)
 			return err
 		}
 
