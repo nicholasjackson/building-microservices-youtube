@@ -91,7 +91,7 @@ func (e *ExchangeRates) getRates() error {
 	}
 	defer resp.Body.Close()
 
-	md := &Cubes{}
+	md := Cubes{}
 	xml.NewDecoder(resp.Body).Decode(&md)
 
 	for _, c := range md.CubeData {
