@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	// reqeusts to the path /goodbye with be handled by this function
+	// reqeusts to the path /goodbye will be handled by this function
 	http.HandleFunc("/goodbye", func(http.ResponseWriter, *http.Request) {
 		log.Println("Goodbye World")
 	})
