@@ -17,7 +17,7 @@ func NewProducts(l *log.Logger) *Products {
 	return &Products{l}
 }
 
-// ServeHTTP is the main entry point for the handler and staisfies the http.Handler
+// ServeHTTP is the main entry point for the handler and satisfies the http.Handler
 // interface
 func (p *Products) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	// handle the request for a list of products
