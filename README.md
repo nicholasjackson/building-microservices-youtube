@@ -4,6 +4,12 @@ Code repository for my Building Microservices YouTube series
 
 Week by week Building Microservices builds on the previous weeks code teaching you how to build a multi-tier microservice system. The code structure for the course is one of a mono repo. To make it simple to follow along, each episode has its own branch showing progress to date.
 
+Get $100 dollars of Digital Ocean credits, valid for 90 days with my referal link. Not needed for the YouTube tutorials, but helps me pay for my own servers.
+
+<a href="https://www.digitalocean.com/?refcode=c6dee99fad25&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
+
+https://m.do.co/c/c6dee99fad25
+
 ## Services
 
 ### Product API [./product-api](./product-api)
