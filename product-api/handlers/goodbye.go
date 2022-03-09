@@ -23,4 +23,6 @@ func (h *Goodbye) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 
 	// write the response
 	fmt.Fprintf(rw, "Goodbye")
+	
+	//rw.Write([]byte("Byee\n"))
 }
