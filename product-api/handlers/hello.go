@@ -28,9 +28,14 @@ func (h *Hello) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 		h.l.Println("Error reading body", err)
 
 		http.Error(rw, "Unable to read request body", http.StatusBadRequest)
+
+		//rw.WriteHeader(http.StatusBadRequest)
+		//rw.Write([]byte("Unable to read request body"))
+
 		return
 	}
 
 	// write the response
+	//h.l.Printf("Data %s\n", d)
 	fmt.Fprintf(rw, "Hello %s", b)
 }
