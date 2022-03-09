@@ -46,6 +46,7 @@ func main() {
 		if err != nil {
 			l.Printf("Error starting server: %s\n", err)
 			os.Exit(1)
+			//l.Fatal(err)
 		}
 	}()
 
@@ -53,6 +54,7 @@ func main() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	signal.Notify(c, os.Kill)
+	//signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 
 	// Block until a signal is received.
 	sig := <-c
