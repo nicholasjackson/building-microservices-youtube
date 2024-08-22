@@ -65,4 +65,4 @@ We continue to look at how you can implement RESTFul services with the Standard 
 
 ### Branch [episode_5](https://github.com/nicholasjackson/building-microservices-youtube/tree/episode_5)
 
-In this epsode we refactor our Standard library RESTful service and start to implement the Gorill toolkit for routing.
+In this episode we refactor our Standard library RESTful service and start to implement the Gorilla toolkit for routing.
